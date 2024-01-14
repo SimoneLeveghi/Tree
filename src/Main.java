@@ -27,7 +27,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        File root = new File(".");
+        String path;
+        try {
+            path = args[0];
+        }
+        catch(ArrayIndexOutOfBoundsException e) {
+            path = ".";
+        }
+        File root = new File(path);
         if (root.exists() && root.isDirectory()) {
             tree(root);
         } else {
